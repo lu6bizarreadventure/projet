@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+
+Exercice 2 :
+Q1 : CMD + R sert à build l'application 

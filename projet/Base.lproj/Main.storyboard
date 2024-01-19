@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="-318.32061068702291" y="-704.22535211267609"/>
         </scene>
-        <!--Document View Controller-->
+        <!--Preview Controller-->
         <scene sceneID="U82-sp-z7P">
             <objects>
-                <viewController id="8c2-ub-KvF" customClass="DocumentViewController" customModule="projet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8c2-ub-KvF" customClass="QLPreviewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CDv-jS-6hV">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

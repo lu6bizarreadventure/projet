@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SwiftUI
+import QuickLook
 
 extension Int {
     func formattedSize() -> String{
@@ -15,7 +17,8 @@ extension Int {
 
 class DocumentTableViewController: UITableViewController {
 
-
+    lazy var previewItem = NSURL()
+    
     struct DocumentFile {
         var title: String
         var size: Int
@@ -120,12 +123,18 @@ class DocumentTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let file = files[indexPath.row]
+        // A vous de coder cette fonction
         self.instantiateQLPreviewController(withUrl: file.url)
-        
     }
     
     func instantiateQLPreviewController(withUrl url: URL) {
-         
+//        let previewController = QLPreviewController()
+//        previewController.dataSource = self
+//        present(previewController, animated: true)
+        let previewController = QLPreviewController()
+        
+        previewController.dataSource = self
+        self.present(previewController, animated:  true, completion: nil)
     }
 
     /*

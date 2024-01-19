@@ -30,10 +30,10 @@
             filePath = "projet/DocumentTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "DocumentTableViewController"
-            landmarkType = "3">
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "instantiateQLPreviewController(withUrl:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -60,7 +60,20 @@ class DocumentTableViewController: UITableViewController, QLPreviewControllerDel
         present(documentPicker, animated: true, completion: nil)
     }
     
-    func
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first else {
+            return
+        }
+
+        // Create a new document with the selected URL
+        let newDocument = DocumentFile(title: "nouveau fichier", size: 12380, url: url, type: "text/plain")
+
+        // Add the new document to the files array
+        files.append(newDocument)
+
+        // Reload the table view to show the new document
+        tableView.reloadData()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

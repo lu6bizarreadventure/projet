@@ -15,9 +15,19 @@ extension Int {
     }
 }
 
+extension DocumentTableViewController: QLPreviewControllerDataSource {
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        return urlToPreview as QLPreviewItem
+    }
+}
+
 class DocumentTableViewController: UITableViewController {
 
-    lazy var previewItem = NSURL()
+    var urlToPreview = NSURL()
     
     struct DocumentFile {
         var title: String
@@ -128,13 +138,10 @@ class DocumentTableViewController: UITableViewController {
     }
     
     func instantiateQLPreviewController(withUrl url: URL) {
-//        let previewController = QLPreviewController()
-//        previewController.dataSource = self
-//        present(previewController, animated: true)
+        self.urlToPreview = url as NSURL
         let previewController = QLPreviewController()
-        
         previewController.dataSource = self
-        self.present(previewController, animated:  true, completion: nil)
+        present(previewController, animated: true)
     }
 
     /*

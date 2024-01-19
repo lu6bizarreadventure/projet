@@ -40,9 +40,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="8c2-ub-KvF" kind="show" id="uYC-DR-0rx"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -25,7 +25,7 @@ extension DocumentTableViewController: QLPreviewControllerDataSource {
     }
 }
 
-class DocumentTableViewController: UITableViewController {
+class DocumentTableViewController: UITableViewController, QLPreviewControllerDelegate, UIDocumentPickerDelegate {
 
     var urlToPreview = NSURL()
     
@@ -48,9 +48,17 @@ class DocumentTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDocument))
     }
 
     // MARK: - Table view data source
+    
+    @objc func addDocument() {
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.jpeg, .png])
+        documentPicker.delegate = self
+        present(documentPicker, animated: true, completion: nil)
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -121,15 +129,13 @@ class DocumentTableViewController: UITableViewController {
         // fin de la fonction
         }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as? DocumentViewController
-        let index = tableView.indexPathForSelectedRow?.row
-        if index != nil, destination != nil {
-            destination!.imageName = files[index!].imageName
-        }
-        
-        
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let destination = segue.destination as? DocumentViewController
+//        let index = tableView.indexPathForSelectedRow?.row
+//        if index != nil, destination != nil {
+//            destination!.imageName = files[index!].imageName
+//        }
+//    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let file = files[indexPath.row]
@@ -141,7 +147,13 @@ class DocumentTableViewController: UITableViewController {
         self.urlToPreview = url as NSURL
         let previewController = QLPreviewController()
         previewController.dataSource = self
+        
+        previewController.delegate = self
         present(previewController, animated: true)
+    }
+    
+    func previewControllerDidDismiss(_ controller: QLPreviewController) {
+        dismiss(animated: true, completion: nil)
     }
 
     /*
